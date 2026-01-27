@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한성대학교 재학생맞춤형고용서비스</title>
+    <style>
+        /* 한성대학교 스타일 (블루 & 화이트) */
+        :root {
+            --primary-color: #005eb8; /* 한성대 메인 블루 유사 색상 */
+            --secondary-color: #f4f4f4;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        /* 헤더 */
+        header {
+            background-color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+        /* 메인 배너 (포스터 영역) */
+        .hero {
+            background: linear-gradient(135deg, #005eb8 0%, #003d7a 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        /* 버튼 스타일 */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #ffc107; /* 강조색 (노랑) */
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: #ffca2c;
+        }
+        /* 프로그램 소개 섹션 */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            border: 1px solid #eee;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-img-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
+        }
+        .card-content {
+            padding: 1.5rem;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        /* 푸터 */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        /* 모바일 최적화 */
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 1.8rem; }
+            .btn { width: 80%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>한성대학교 대학일자리플러스센터</h1>
+        </header>
+
+    <div class="hero">
+        <h2>재학생 맞춤형 고용서비스</h2>
+        <p>진로 탐색부터 취업 성공까지,<br>한성대학교가 끝까지 함께합니다.</p>
+        
+        <a href="https://script.google.com/macros/s/AKfycbyZrVa3NJNF7zCSX4f8IKqyDpSS6A6Mm_OVKoQrTNtjlJsPcD8YHkIreO1K65ghMmoA1A/exec">👉 지금 바로 신청하기</a>
+    </div>
+
+    <div class="container">
+        <h2 style="text-align: center; color: #333;">진행 중인 프로그램</h2>
+        
+        <div class="program-grid">
+            <div class="card">
+                <div class="card-img-placeholder">포스터 이미지 영역</div>
+                <div class="card-content">
+                    <h3>빌드업 프로젝트</h3>
+                    <p>AI 기반 직무 역량 분석과 1:1 심층 상담을 통해 나만의 진로 로드맵을 설계하세요.</p>
+                    <a href="#" style="color: #005eb8; font-weight: bold; text-decoration: none;">자세히 보기 &rarr;</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-placeholder">포스터 이미지 영역</div>
+                <div class="card-content">
+                    <h3>점프업 프로젝트</h3>
+                    <p>희망 직무에 맞는 맞춤형 훈련 과정과 취업 활동 비용을 지원해 드립니다.</p>
+                    <a href="#" style="color: #005eb8; font-weight: bold; text-decoration: none;">자세히 보기 &rarr;</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-placeholder">포스터 이미지 영역</div>
+                <div class="card-content">
+                    <h3>청년 미래 직진</h3>
+                    <p>인문/사회 계열 전공자를 위한 특화 직무 교육 프로그램입니다.</p>
+                    <a href="#" style="color: #005eb8; font-weight: bold; text-decoration: none;">자세히 보기 &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>한성대학교 대학일자리플러스센터</p>
+        <p>문의: 02-760-4224 | 위치: 상상관 1층</p>
+        <p>&copy; 2026 Hansung University Career Center. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
