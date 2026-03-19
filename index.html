@@ -3,179 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>한성대학교 재학생맞춤형고용서비스 통합링크</title>
+    <title>한성대학교 취업지원 통합관리</title>
     <style>
-        :root {
-            --primary-color: #005eb8; 
-            --secondary-color: #f8f9fa;
-            --admin-color: #2c3e50;
-            --text-color: #333;
-            --accent-color: #ffc107;
-        }
-        body {
-            font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
-            margin: 0; padding: 0; line-height: 1.6; color: var(--text-color);
-            background-color: #f0f2f5;
-        }
-        header {
-            background-color: white; padding: 1rem 2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky; top: 0; z-index: 1000;
-            display: flex; justify-content: center; align-items: center;
-        }
-        header h1 { font-size: 1.1rem; color: var(--primary-color); margin: 0; }
-
-        .hero {
-            background: linear-gradient(135deg, #005eb8 0%, #003d7a 100%);
-            color: white; text-align: center; padding: 3rem 1rem;
-        }
-        .hero h2 { font-size: 2rem; margin-bottom: 0.5rem; }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
-        
-        /* 섹션 타이틀 */
-        .section-title {
-            text-align: center; margin: 3rem 0 1.5rem; font-size: 1.5rem;
-            position: relative; padding-bottom: 10px;
-        }
-        .section-title::after {
-            content: ''; border-bottom: 3px solid var(--primary-color);
-            width: 50px; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-        }
-
-        /* 관리자(선생님) 전용 퀵링크 스타일 */
-        .admin-box {
-            background: white; border-radius: 12px; padding: 1.5rem;
-            border-left: 5px solid var(--admin-color);
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem; margin-bottom: 2rem;
-        }
-        .admin-link {
-            display: flex; align-items: center; padding: 12px;
-            background: #f8f9fa; border-radius: 8px; text-decoration: none;
-            color: var(--admin-color); font-weight: 600; transition: 0.2s;
-        }
-        .admin-link:hover { background: #e9ecef; transform: scale(1.02); }
-
-        /* 프로그램 카드 그리드 */
-        .program-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .card {
-            background: white; border-radius: 12px; overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: 0.3s;
-        }
-        .card:hover { transform: translateY(-8px); }
-        .card-img {
-            width: 100%; height: 180px; background: #eee;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.9rem; color: #999;
-        }
-        .card-content { padding: 1.5rem; }
-        .card h3 { margin: 0 0 10px; color: var(--primary-color); }
-        
-        /* 버튼 공통 스타일 */
-        .btn-group { display: flex; flex-direction: column; gap: 8px; margin-top: 15px; }
-        .btn-main {
-            background: var(--primary-color); color: white; text-align: center;
-            padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold;
-        }
-        .btn-sub {
-            background: white; color: var(--primary-color); text-align: center;
-            padding: 9px; border-radius: 6px; text-decoration: none;
-            border: 1px solid var(--primary-color); font-size: 0.9rem;
-        }
-
-        footer {
-            background: #333; color: white; text-align: center;
-            padding: 2rem; margin-top: 4rem; font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h2 { font-size: 1.5rem; }
-            .program-grid { grid-template-columns: 1fr; }
-        }
+        /* (기존 스타일 유지 및 관리자용 색상 최적화) */
+        :root { --primary-color: #005eb8; --admin-color: #2c3e50; --student-color: #27ae60; }
+        body { font-family: 'Pretendard', sans-serif; margin: 0; background: #f4f7f9; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        .section-title { border-left: 5px solid var(--primary-color); padding-left: 15px; margin: 40px 0 20px; font-size: 1.4rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .card-admin { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-decoration: none; color: var(--admin-color); font-weight: bold; display: flex; align-items: center; border: 1px solid #ddd; }
+        .card-qr { background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .qr-img { width: 120px; height: 120px; cursor: pointer; border: 1px solid #eee; margin: 10px 0; transition: transform 0.2s; }
+        .qr-img:hover { transform: scale(1.05); }
+        .btn-copy { width: 100%; padding: 8px; background: #f8f9fa; border: 1px solid #ccc; border-radius: 5px; cursor: pointer; font-size: 0.85rem; margin-top: 5px; }
+        .btn-copy:hover { background: #e9ecef; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>한성대학교 대학일자리플러스센터 통합 관리페이지</h1>
-    </header>
+<header style="background: white; padding: 15px; text-align: center; border-bottom: 2px solid var(--primary-color);">
+    <h1 style="margin:0; font-size: 1.2rem; color: var(--primary-color);">한성대 재학생맞춤형고용서비스 통합 대시보드</h1>
+</header>
 
-    <div class="hero">
-        <h2>재학생 맞춤형 고용서비스</h2>
-        <p>선생님들을 위한 업무 도구와 학생용 링크 모음입니다.</p>
-    </div>
+<div class="container">
+    <h2 class="section-title">💼 선생님 전용 업무 도구</h2>
+    <div id="admin-tools" class="grid"></div>
 
-    <div class="container">
-        
-        <h2 class="section-title">💼 선생님 전용 업무 도구</h2>
-        <div class="admin-box">
-            <a href="구글_시트_주소_입력" class="admin-link" target="_blank">📊 전체 명단 관리 시트</a>
-            <a href="상담_기록_주소_입력" class="admin-link" target="_blank">📝 상담 일지 기록문서</a>
-            <a href="예산_관리_주소_입력" class="admin-link" target="_blank">💰 사업비 집행 현황</a>
-            <a href="기타_사이트_주소" class="admin-link" target="_blank">🔗 고용24 관리자</a>
-        </div>
+    <h2 class="section-title" style="border-color: var(--student-color);">📢 학생 배포용 퀵 메뉴 (클릭 시 복사)</h2>
+    <div id="student-tools" class="grid"></div>
+</div>
 
-        <h2 class="section-title">📢 학생 배포용 업무 도구</h2>
-        <div class="admin-box" style="border-left-color: #27ae60;"> <a href="카카오톡_채널_링크" class="admin-link" target="_blank">💬 카카오톡 채널 안내</a>
-        <a href="공식_인스타그램_링크" class="admin-link" target="_blank">📸 센터 인스타그램</a>
-        <a href="사업_안내_팜플렛_링크" class="admin-link" target="_blank">📄 사업 안내 PDF(배포용)</a>
-        <a href="워크넷_직무역량검사_링크" class="admin-link" target="_blank">🔍 직무역량검사 바로가기</a>
-        </div>
+<script>
+    // 1. [선생님 전용 도구] 설정
+    const ADMIN_CONFIG = [
+        { name: "📊 전체 명단 관리", url: "https://docs.google.com/spreadsheets/d/시트ID1" },
+        { name: "📝 상담 일지 기록", url: "https://docs.google.com/spreadsheets/d/시트ID2" },
+        { name: "💰 사업비 집행현황", url: "https://docs.google.com/spreadsheets/d/시트ID3" },
+        { name: "🔗 고용24 관리자", url: "https://www.work24.go.kr" }
+    ];
 
-        <h2 class="section-title">📢 진행 중인 프로그램 (학생 신청용)</h2>
-        <div class="program-grid">
-            
-            <div class="card">
-                <div class="card-img">
-                    <img src="poster_main1.png" alt="빌드업 포스터" style="width:100%; height:100%; object-fit:cover; display:block;">
+    // 2. [학생 배포용 퀵 메뉴] 설정
+    const STUDENT_CONFIG = [
+        { name: "💬 카카오 채널", url: "https://pf.kakao.com/_xxxx", qr: "qr_kakao.png" },
+        { name: "📸 인스타그램", url: "https://instagram.com/hansung", qr: "qr_insta.png" },
+        { name: "📄 사업 안내문", url: "https://bit.ly/hansung_guide", qr: "qr_info.png" }
+    ];
+
+    // --- 아래는 자동 실행되는 기능이므로 건드리지 않으셔도 됩니다 ---
+
+    // 화면 그리기 함수
+    function renderTools() {
+        const adminContainer = document.getElementById('admin-tools');
+        const studentContainer = document.getElementById('student-tools');
+
+        // 선생님 도구 렌더링
+        ADMIN_CONFIG.forEach(item => {
+            adminContainer.innerHTML += `<a href="${item.url}" target="_blank" class="card-admin">🔗 ${item.name}</a>`;
+        });
+
+        // 학생 도구 렌더링
+        STUDENT_CONFIG.forEach(item => {
+            studentContainer.innerHTML += `
+                <div class="card-qr">
+                    <div style="font-weight:bold; color:#555;">${item.name}</div>
+                    <img src="${item.qr}" class="qr-img" title="클릭하면 이미지 복사" onclick="copyImage('${item.qr}')">
+                    <button class="btn-copy" onclick="copyLink('${item.url}')">주소 복사</button>
                 </div>
-                <div class="card-content">
-                    <h3>빌드업 프로젝트 (1~2학년)</h3>
-                    <p>직무 탐색과 진로 설계를 돕는 저학년 특화 프로그램입니다.</p>
-                    <div class="btn-group">
-                        <a href="앱스스크립트_신청링크_입력" class="btn-main" target="_blank">📌 신청서 접수하기</a>
-                        <a href="#" class="btn-sub">📄 상세 공고 보기</a>
-                    </div>
-                </div>
-            </div>
+            `;
+        });
+    }
 
-            <div class="card">
-                <div class="card-img">
-                    <img src="poster_main2.png" alt="점프업 포스터" style="width:100%; height:100%; object-fit:cover; display:block;">
-                </div>
-                <div class="card-content">
-                    <h3>점프업 프로젝트 (3~4학년)</h3>
-                    <p>본격적인 취업 준비와 직무 훈련 비용을 지원합니다.</p>
-                    <div class="btn-group">
-                        <a href="앱스스크립트_신청링크_입력" class="btn-main" target="_blank">🚀 지금 바로 신청</a>
-                        <a href="#" class="btn-sub">📄 상세 공고 보기</a>
-                    </div>
-                </div>
-            </div>
+    // 복사 기능들
+    function copyLink(url) {
+        navigator.clipboard.writeText(url).then(() => alert("주소가 복사되었습니다!"));
+    }
 
-            <div class="card">
-                <div class="card-img" style="background: var(--secondary-color);">📁 서식 보관함</div>
-                <div class="card-content">
-                    <h3>각종 양식 다운로드</h3>
-                    <p>참여 확인서, 소감문 등 제출에 필요한 서식을 모아두었습니다.</p>
-                    <div class="btn-group">
-                        <a href="구글드라이브_공유폴더_링크" class="btn-main">📂 자료실 바로가기</a>
-                    </div>
-                </div>
-            </div>
+    async function copyImage(src) {
+        try {
+            const data = await fetch(src);
+            const blob = await data.blob();
+            await navigator.clipboard.write([new ClipboardItem({[blob.type]: blob})]);
+            alert("QR 이미지가 복사되었습니다!");
+        } catch (e) { alert("우클릭 후 '이미지 복사'를 이용해주세요."); }
+    }
 
-        </div>
-    </div>
-
-    <footer>
-        <p>한성대학교 대학일자리플러스센터 (재학생맞춤형고용서비스)</p>
-        <p>문의: 02-760-4224 | 상상관 지하 1층</p>
-        <p>&copy; 2026 Hansung University. All rights reserved.</p>
-    </footer>
+    window.onload = renderTools;
+</script>
 
 </body>
 </html>
