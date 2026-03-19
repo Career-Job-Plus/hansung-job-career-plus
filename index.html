@@ -29,7 +29,7 @@
     <h2 class="section-title">💼 선생님 전용 업무 도구</h2>
     <div id="admin-tools" class="grid"></div>
 
-    <h2 class="section-title" style="border-color: var(--student-color);">📢 학생 배포용 퀵 메뉴 (클릭 시 복사)</h2>
+    <h2 class="section-title" style="border-color: var(--student-color);">📢 링크 및 QR코드 복사 (클릭 시 복사)</h2>
     <div id="student-tools" class="grid"></div>
 </div>
 
@@ -39,14 +39,14 @@
         { name: "📊 월별 활동 사전 신청 관리", url: "https://docs.google.com/spreadsheets/d/17w7vLpVqVy797paESqBnUjYppYQ3s0vVNPLsaPYKnXQ/edit?usp=sharing" },
         { name: "📝 수당 신청 관리 앱", url: "https://www.appsheet.com/start/b5f63791-50fd-497b-ae6d-5de4520da700" },
         { name: "💰 수당 신청 데이터 시트", url: "https://docs.google.com/spreadsheets/d/1b32jM_tQKK7gVwMykBMudUdJ5qOj7i81OkkboUcuoOI/edit?usp=sharing" },
-        { name: "🔗 없음", url: "https://www.work24.go.kr" }
+        { name: "🔗 기념품 수령대장 관리 시트", url: "https://docs.google.com/spreadsheets/d/1UUG3MIXHbZLt0hI7Y-ohJcM1HnsvZBylQM-UGK3mphg/edit?gid=0#gid=0" }
     ];
 
-    // 2. [학생 배포용 퀵 메뉴] 설정
+    // 2. [배포용 퀵 메뉴] 설정
     const STUDENT_CONFIG = [
-        { name: "💬 월별 활동 사전 신청", url: "https://script.google.com/macros/s/AKfycbzVh7cycwrMND91Z9PrMBLQBvTtwKP-veqmbm8YQ4m5mz7taPt9AopsyWxXnz_CL72P/exec", qr: "qr_sajun.png" },
-        { name: "📸 인스타그램", url: "https://instagram.com/hansung", qr: "qr_insta.png" },
-        { name: "📄 사업 안내문", url: "https://bit.ly/hansung_guide", qr: "qr_info.png" }
+        { name: "월별 활동 사전 신청", url: "https://script.google.com/macros/s/AKfycbzVh7cycwrMND91Z9PrMBLQBvTtwKP-veqmbm8YQ4m5mz7taPt9AopsyWxXnz_CL72P/exec", qr: "qr_sajun.png" },
+        { name: "기념품 수령대장(랜덤)", url: "https://script.google.com/macros/s/AKfycbxiB_ODpgTavxij6N6-iDV7tMPhhdx8_awaiNZ-xEd02A7QnztwqvK-Ja7jL1ndnGtE/exec", qr: "qr_goods.png" },
+        { name: "없음", url: "https://bit.ly/hansung_guide", qr: "qr_info.png" }
     ];
 
     // --- 아래는 자동 실행되는 기능이므로 건드리지 않으셔도 됩니다 ---
