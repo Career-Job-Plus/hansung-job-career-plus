@@ -11,12 +11,28 @@
         .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
         .section-title { border-left: 5px solid var(--primary-color); padding-left: 15px; margin: 40px 0 20px; font-size: 1.4rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .card-admin { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-decoration: none; color: var(--admin-color); font-weight: bold; display: flex; align-items: center; border: 1px solid #ddd; }
+        
+        /* 선생님 카드 스타일: 설명란이 추가되므로 세로 정렬로 변경 */
+        .card-admin { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-decoration: none; color: var(--admin-color); font-weight: bold; display: flex; flex-direction: column; justify-content: center; border: 1px solid #ddd; transition: 0.2s; }
+        .card-admin:hover { border-color: var(--primary-color); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .card-admin-title { font-size: 1rem; }
+        .card-admin-desc { font-size: 0.85rem; color: #666; font-weight: normal; margin-top: 8px; } /* 설명란 디자인 */
+
         .card-qr { background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .qr-img { width: 120px; height: 120px; cursor: pointer; border: 1px solid #eee; margin: 10px 0; transition: transform 0.2s; }
         .qr-img:hover { transform: scale(1.05); }
         .btn-copy { width: 100%; padding: 8px; background: #f8f9fa; border: 1px solid #ccc; border-radius: 5px; cursor: pointer; font-size: 0.85rem; margin-top: 5px; }
         .btn-copy:hover { background: #e9ecef; }
+
+        /* 선생님 전용 도구 줄바꿈 레이아웃용 클래스 */
+        #admin-tools { display: block; } 
+        .admin-row { display: flex; gap: 15px; margin-bottom: 15px; }
+        .admin-row > .card-admin { flex: 1; }
+
+        /* 📱 모바일 화면에서는 무조건 세로로 1개씩 나오게 설정 */
+        @media (max-width: 768px) {
+            .admin-row { flex-direction: column; gap: 10px; margin-bottom: 10px; }
+        }
     </style>
 </head>
 <body>
@@ -27,21 +43,25 @@
 
 <div class="container">
     <h2 class="section-title">💼 선생님 전용 업무 도구</h2>
-    <div id="admin-tools" class="grid"></div>
+    <div id="admin-tools"></div>
 
     <h2 class="section-title" style="border-color: var(--student-color);">📢 링크 및 QR코드 복사 (클릭 시 복사)</h2>
     <div id="student-tools" class="grid"></div>
 </div>
 
 <script>
-    // 1. [선생님 전용 도구] 설정
+    // 1. [선생님 전용 도구] 설정 
+    // 👉 desc: "여기에 설명을 적어주세요" 부분을 자유롭게 수정하시면 됩니다.
     const ADMIN_CONFIG = [
-        { name: "월별 활동 사전 신청 관리", url: "https://docs.google.com/spreadsheets/d/17w7vLpVqVy797paESqBnUjYppYQ3s0vVNPLsaPYKnXQ/edit?usp=sharing" },
-        { name: "수당 신청 관리 앱", url: "https://www.appsheet.com/start/b5f63791-50fd-497b-ae6d-5de4520da700" },
-        { name: "수당 신청 데이터 시트", url: "https://docs.google.com/spreadsheets/d/1b32jM_tQKK7gVwMykBMudUdJ5qOj7i81OkkboUcuoOI/edit?usp=sharing" },
-        { name: "기념품 수령대장 관리 시트", url: "https://docs.google.com/spreadsheets/d/1UUG3MIXHbZLt0hI7Y-ohJcM1HnsvZBylQM-UGK3mphg/edit?gid=0#gid=0" },
-        { name: "학생 성별 조회 앱", url: "https://script.google.com/macros/s/AKfycbwoV2kDLr-RBvXhXFR2w-E-TJKYws14wxy9LyU8TywDwG2_2JjK-n60I1JMGeB84acfIw/exec" }
+        { name: "학생 성별 조회 앱", url: "https://script.google.com/macros/s/AKfycbwoV2kDLr-RBvXhXFR2w-E-TJKYws14wxy9LyU8TywDwG2_2JjK-n60I1JMGeB84acfIw/exec", desc: "학생의 성별 조회/계정등록 필요" },
+        { name: "월별 활동 사전 신청 관리", url: "https://docs.google.com/spreadsheets/d/17w7vLpVqVy797paESqBnUjYppYQ3s0vVNPLsaPYKnXQ/edit?usp=sharing", desc: "점프업 월별 활동 신청 내역 확인/권한요청 필요" },
+        { name: "수당 신청 관리 앱", url: "https://www.appsheet.com/start/b5f63791-50fd-497b-ae6d-5de4520da700", desc: "수당 신청을 관리 앱/권한요청 필요" },
+        { name: "수당 신청 데이터 시트", url: "https://docs.google.com/spreadsheets/d/1b32jM_tQKK7gVwMykBMudUdJ5qOj7i81OkkboUcuoOI/edit?usp=sharing", desc: "수당 신청과 관련된 전체 로우 데이터 확인/권한요청 필요" },
+        { name: "기념품 수령대장 관리 시트", url: "https://docs.google.com/spreadsheets/d/1UUG3MIXHbZLt0hI7Y-ohJcM1HnsvZBylQM-UGK3mphg/edit?gid=0#gid=0", desc: "기념품 지급 내역 및 재고 관리/권한요청 필요" }
     ];
+
+    // 👉 배치 숫자 설정 (원하시는 대로 3개-2개-3개 배치)
+    const ADMIN_LAYOUT = [1, 3, 1]; 
 
     // 2. [배포용 퀵 메뉴] 설정
     const STUDENT_CONFIG = [
@@ -58,11 +78,29 @@
         const studentContainer = document.getElementById('student-tools');
 
         // 선생님 도구 렌더링
-        ADMIN_CONFIG.forEach(item => {
-            adminContainer.innerHTML += `<a href="${item.url}" target="_blank" class="card-admin">🔗 ${item.name}</a>`;
+        adminContainer.innerHTML = ''; 
+        let currentIndex = 0;
+        ADMIN_LAYOUT.forEach(count => {
+            const rowItems = ADMIN_CONFIG.slice(currentIndex, currentIndex + count);
+            if (rowItems.length === 0) return; 
+
+            let rowHTML = '<div class="admin-row">';
+            rowItems.forEach(item => {
+                // 설명(desc)이 비어있지 않으면 화면에 출력하도록 처리
+                let descHTML = item.desc ? `<span class="card-admin-desc">${item.desc}</span>` : '';
+                rowHTML += `<a href="${item.url}" target="_blank" class="card-admin">
+                                <div class="card-admin-title">🔗 ${item.name}</div>
+                                ${descHTML}
+                            </a>`;
+            });
+            rowHTML += '</div>';
+            
+            adminContainer.innerHTML += rowHTML;
+            currentIndex += count;
         });
 
         // 학생 도구 렌더링
+        studentContainer.innerHTML = ''; 
         STUDENT_CONFIG.forEach(item => {
             studentContainer.innerHTML += `
                 <div class="card-qr">
